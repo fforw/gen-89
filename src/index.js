@@ -3,7 +3,6 @@ import spectral from "spectral.js"
 import perfNow from "performance-now"
 import { createNoise3D } from "simplex-noise"
 import "./style.css"
-import spectral from "spectral.js"
 import AABB from "./AABB"
 import { easeFlank, easeInOutQuint } from "./easing"
 
@@ -176,9 +175,21 @@ domready(
 
             const palette = [
                 "#000",
-                Math.random() < 0.5 ? "#51ff21" : "#ff2151",
-                ... spectral.palette("rgba(32,82,255,0.5)", "rgba(255,255,255,0.85)", 22, spectral.RGBA)
+                ... spectral.palette("rgba(32,82,255,0.5)", "rgba(255,255,255,0.85)", 23, spectral.RGBA)
             ]
+
+            const accent = Math.random() < 0.5 ? "#82f562" : "#ff426b";
+
+            const lineCount = 120
+
+            const accents = []
+            for (let i = 0; i < lineCount; i++)
+            {
+                if (Math.random() < 1/24)
+                {
+                    accents.push(i)
+                }
+            }
 
             const animate = () => {
                 ctx.fillStyle = "#000";
@@ -189,8 +200,8 @@ domready(
 
                 const max = 250
                 ctx.fillStyle = "#fff";
-                const size = Math.min(cx,cy)
-                for (let i = 0; i < 120; i++)
+                const size = Math.min(cx,cy) * 1.2
+                for (let i = 0; i < lineCount; i++)
                 {
                     rndR.z = i
                     rndR2.z = i
@@ -210,7 +221,7 @@ domready(
                     const x2 = cx + Math.cos(a) * r + Math.cos(a2 + TAU/2) * r2
                     const y2 = cy + Math.sin(a) * r + Math.sin(a2 + TAU/2) * r2
 
-                    ctx.strokeStyle = palette[0|rndColor * palette.length]
+                    ctx.strokeStyle = accents.indexOf(i) >= 0 ? accent : palette[0|rndColor * palette.length]
                     ctx.lineWidth = 1 + Math.floor(rndWidth * 4)
                     ctx.beginPath()
                     ctx.moveTo(x,y)

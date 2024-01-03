@@ -38,11 +38,11 @@ domready(
             ctx.fillStyle = "#000";
             ctx.fillRect(0,0, width, height);
 
-            let x = 0
-            let y = 0
-
             const size = 300
             const padding = 10
+
+            let x = 0
+            let y = padding
 
             for (let name in Easings)
             {
