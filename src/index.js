@@ -97,7 +97,8 @@ class RandomValue
     dz = 0
     pow = 1
 
-    constructor(x = Math.random(), y = Math.random(), z = Math.random(),a = Math.random() * TAU, speed = randomSpeed())
+
+    constructor(speed = randomSpeed(), x = Math.random(), y = Math.random(), z = Math.random(), a = Math.random() * TAU)
     {
         this.x = x
         this.y = y
@@ -164,7 +165,7 @@ domready(
             noiseFn = createNoise3D()
 
             const rndA = new RandomValue()
-            const rndA2 = new RandomValue(undefined,undefined,undefined,undefined,0.0003)
+            const rndA2 = new RandomValue(0.0003)
             const rndR = new RandomValue()
             const rndR2 = new RandomValue()
             const rndColor = new RandomValue()
