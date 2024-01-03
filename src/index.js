@@ -178,7 +178,7 @@ domready(
                 ... spectral.palette("rgba(32,82,255,0.5)", "rgba(255,255,255,0.85)", 23, spectral.RGBA)
             ]
 
-            const accent = Math.random() < 0.5 ? "#82f562" : "#ff426b";
+            const accent = Math.random() < 0.5 ? "#82f563" : "#ff426a";
 
             const lineCount = 120
 
